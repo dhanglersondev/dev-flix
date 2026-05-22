@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 
 import './filme.css';
@@ -7,6 +7,7 @@ import './filme.css';
 function Filme() {
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [movie, setMovie] = useState({});
   const [loading, setLoading] = useState(true);
@@ -18,18 +19,18 @@ function Filme() {
       await api.get(`/movie/${id}`, {
         params: {
           api_key: '3a2ce5ee66f0acc71003cd3f200a7d48',
-          language: 'pt-BR'
+          language: 'pt-BR',
         }
       })
-
-      .then((response) => {
-        setMovie(response.data);
-        setLoading(false);
-      })
-
-      .catch(() => {
-        console.log('Filme não encontrado');
-      });
+        .then((response) => {
+          setMovie(response.data);
+          setLoading(false);
+        })
+        .catch(() => {
+          console.log('Filme não encontrado');
+          navigate('/', { replace: true });
+          return;
+        });
 
     }
 
@@ -39,12 +40,11 @@ function Filme() {
       console.log('Componente desmontado');
     };
 
-  }, [id]);
+  }, [id, navigate]);
 
   function saveMovie() {
 
-    const myList = localStorage.getItem('@primeflix');
-
+    const myList = localStorage.getItem('@devflix');
     let savedMovies = JSON.parse(myList) || [];
 
     const hasMovie = savedMovies.some(
@@ -52,13 +52,12 @@ function Filme() {
     );
 
     if (hasMovie) {
-      alert('Esse filme já está salvo!');
+      alert('Esse filme já está como favorito!');
       return;
     }
 
     savedMovies.push(movie);
-
-    localStorage.setItem('@primeflix', JSON.stringify(savedMovies));
+    localStorage.setItem('@devflix', JSON.stringify(savedMovies));
 
     alert('Filme salvo com sucesso!');
   }
@@ -82,31 +81,23 @@ function Filme() {
       />
 
       <div className="movie-details">
-
         <h3>Sinopse</h3>
 
         <strong>
           ⭐ {movie.vote_average.toFixed(1)} / 10
         </strong>
-
       </div>
 
       <span>{movie.overview}</span>
 
       <div className="buttons-area">
-
         <button onClick={saveMovie}>
-          Salvar
+          Favoritar
         </button>
 
-        <a
-          target="blank"
-          rel="external"
-          href={`https://youtube.com/results?search_query=${movie.title} Trailer`}
-        >
+        <a href={`https://www.youtube.com/results?search_query=${movie.title} Trailer`} target="blank" rel="noopener noreferrer">
           Trailer
         </a>
-
       </div>
 
     </div>
