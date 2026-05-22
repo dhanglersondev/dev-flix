@@ -1,3 +1,5 @@
+import api from '../../services/api';
+
 function Filme() {
   return (
     <div>
