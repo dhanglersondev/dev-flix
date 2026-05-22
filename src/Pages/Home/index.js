@@ -1,8 +1,8 @@
 function Home() {
   return (
     <div>
-      <h1>Home Page</h1>
-      <p>Bem-vindo ao DevFlix! Explore nossos filmes e séries.</p>
+      <h1>Bem-vindo ao DevFlix!</h1>
+      <h2>Explore nossos filmes.</h2>
     </div>
   );
 }
