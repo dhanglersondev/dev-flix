@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Home from './Pages/Home';
-import Filme from './Pages/Filme'; 
+import Home from './pages/Home';
+import Filme from './pages/Filme'; 
 
 import Header from './components/Header';
 
