@@ -1,16 +1,20 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import Filme from './pages/Filme'; 
+import Error from './pages/Error';
 
-import Header from './components/Header';
+import DefaultLayout from './layout/DefaultLayout';
 
 function AppRoutes() {
   return (
     <Router>
-      <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/filme" element={<Filme />} />
+        <Route element={<DefaultLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/filme/:id" element={<Filme />} />
+        </Route>
+
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   );
