@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api';
 
+import './filme.css';
+
 function Filme() {
 
   const { id } = useParams();
@@ -40,17 +42,26 @@ function Filme() {
     );
   }
 
-  return (
-    <div className="movie-info">
-      <h1>{movie.title}</h1>
-      <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt={movie.title} />
+return (
+  <div className="movie-info">
+    <h1>{movie.title}</h1>
 
+    <img
+      src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+      alt={movie.title}
+    />
+
+    <div className="movie-details">
       <h3>Sinopse</h3>
-      <span>{movie.overview}</span>
 
-      <strong>Avaliação: {movie.vote_average.toFixed(1)} / 10</strong>
+      <strong>
+        Avaliação: {movie.vote_average.toFixed(1)} / 10
+      </strong>
     </div>
-  );
+
+    <span>{movie.overview}</span>
+  </div>
+);
 }
 
 export default Filme;
