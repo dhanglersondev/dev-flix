@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# Dev Flix
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Aplicação React para explorar filmes em cartaz, visualizar detalhes e salvar favoritos localmente.
 
-## Available Scripts
+## 📌 Sobre o projeto
 
-In the project directory, you can run:
+O **Dev Flix** é uma aplicação web em React que consome a API do **The Movie Database (TMDB)** para exibir filmes em cartaz e permitir que o usuário:
 
-### `npm start`
+- veja a lista dos filmes mais recentes em exibição;
+- aceda aos detalhes de um filme específico;
+- salve filmes como favoritos no `localStorage` do navegador;
+- remova filmes da lista de favoritos;
+- abra o trailer do filme diretamente em uma nova aba.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+O projeto foi estruturado com React Router para navegação entre páginas e usa `react-toastify` para feedback visual ao salvar/remover filmes.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ✨ Funcionalidades
 
-### `npm test`
+- **Home**: lista os filmes em cartaz com imagem e botão para acessar detalhes.
+- **Detalhes do filme**: exibe título, capa, sinopse, avaliação média e ações para favoritar ou abrir trailer.
+- **Favoritos**: lista os filmes salvos pelo usuário, com opção de remover e visualizar detalhes.
+- **Tratamento de rota inválida**: página de erro para caminhos não encontrados.
+- **Persistência local**: favoritos são armazenados no `localStorage`.
+- **Feedback visual**: notificações de sucesso/aviso ao favoritar ou remover filmes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Tecnologias utilizadas
 
-### `npm run build`
+- React 19
+- React Router DOM
+- Axios
+- React Toastify
+- Create React App
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📥 Pré-requisitos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Antes de começar, certifique-se de que você tenha instalado:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Node.js](https://nodejs.org/) (versão 18 ou superior recomendada)
+- [npm](https://www.npmjs.com/)
 
-### `npm run eject`
+## 🚀 Instalação
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone o repositório:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   git clone https://github.com/seu-usuario/dev-flix.git
+   cd dev-flix
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Instale as dependências:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. Inicie a aplicação em modo de desenvolvimento:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+   npm start
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Acesse no navegador:
 
-### Code Splitting
+   ```text
+   http://localhost:3000
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🧪 Scripts disponíveis
 
-### Analyzing the Bundle Size
+- `npm start` — inicia o projeto localmente.
+- `npm run build` — cria a versão de produção.
+- `npm test` — executa a suíte de testes (se houver).
+- `npm run eject` — expõe a configuração do CRA (ação irreversível).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🗂️ Estrutura do projeto
 
-### Making a Progressive Web App
+```text
+src/
+├── components/
+│   └── Header.js
+├── layout/
+│   └── DefaultLayout.js
+├── pages/
+│   ├── Error/
+│   ├── Favoritos/
+│   ├── Filme/
+│   └── Home/
+├── services/
+│   └── api.js
+├── App.js
+├── routes.js
+└── index.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🔄 Fluxo de funcionamento
 
-### Advanced Configuration
+1. Ao carregar a aplicação, a Home faz uma requisição para a API do TMDB para buscar filmes em cartaz.
+2. Cada filme é exibido com imagem e um link para a rota `/filme/:id`.
+3. A página de detalhes busca os dados completos do filme pela ID.
+4. O botão **Favoritar** salva o filme no `localStorage` e mostra uma notificação.
+5. A página **Favoritos** exibe a lista salva e permite remover itens.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🌐 Integração com a API
 
-### Deployment
+A base da API está configurada em `src/services/api.js`, utilizando o endpoint padrão do TMDB.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+> Observação: o projeto atualmente utiliza a chave da API diretamente no código. Para um cenário mais profissional, recomenda-se mover esta chave para variáveis de ambiente.
 
-### `npm run build` fails to minify
+## 📝 Observações importantes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Os favoritos são mantidos apenas no navegador do usuário, por meio do `localStorage`.
+- O build de produção foi validado com sucesso via `npm run build`.
+- O projeto ainda pode ser melhorado com:
+  - paginação da lista de filmes;
+  - busca por título;
+  - tratamento mais completo de erros de API;
+  - uso de variáveis de ambiente para a chave do TMDB.
+
+## 👤 Autor
+
+Desenvolvido como projeto de estudo e demonstração de consumo de API com React.
