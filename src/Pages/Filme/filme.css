@@ -1,3 +1,7 @@
+/* =========================
+   FILMES
+========================= */
+
 /* LOADING */
 .loading {
   width: 100%;
@@ -6,11 +10,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background: linear-gradient(135deg, #272727, #7b2a2a);
 }
 
 .loading h2 {
   font-size: 28px;
-  color: #292929;
+  color: #e5e6e8;
 }
 
 /* CONTAINER PRINCIPAL */
@@ -24,6 +30,8 @@
 
   display: flex;
   flex-direction: column;
+
+  color: #fff;
 }
 
 /* TÍTULO */
@@ -31,8 +39,8 @@
   text-align: center;
 
   font-size: 32px;
-  font-weight: 500;
-  color: #1f1f1f;
+  font-weight: 600;
+  color: #dc0707;
 
   margin-bottom: 28px;
 
@@ -49,7 +57,7 @@
 
   border-radius: 14px;
 
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 
   margin-bottom: 28px;
 }
@@ -69,9 +77,9 @@
 .movie-details h3 {
   font-size: 22px;
   font-weight: 600;
-  color: #1f1f1f;
+  color: #fff;
 
-  background: #d9d9d9;
+  background: #292929;
 
   padding: 12px 18px;
 
@@ -82,9 +90,9 @@
 .movie-details strong {
   font-size: 16px;
   font-weight: 600;
-  color: #1f1f1f;
+  color: #fff;
 
-  background: #d0d0d0;
+  background: #dc0707;
 
   padding: 12px 18px;
 
@@ -98,14 +106,14 @@
 .movie-details strong:hover {
   transform: scale(1.05);
 
-  background: #bdbdbd;
+  background: #a70505;
 }
 
 /* SINOPSE */
 .movie-info span {
   font-size: 19px;
   line-height: 1.8;
-  color: #2a2929;
+  color: #cbd5e1;
 
   margin-bottom: 30px;
 }
@@ -147,7 +155,7 @@
 
 .buttons-area button:hover,
 .buttons-area a:hover {
-  background: rgb(17, 17, 17);
+  background: #171717;
 
   transform: translateY(-2px);
 }
