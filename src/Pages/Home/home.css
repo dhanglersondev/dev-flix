@@ -156,6 +156,6 @@
 
   .movies-list strong {
     font-size: 17px;
-    min-height: auto;
+    min-height: 0;
   }
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
+import { toast } from 'react-toastify';
 
 import './filme.css';
 
@@ -52,14 +53,14 @@ function Filme() {
     );
 
     if (hasMovie) {
-      alert('Esse filme já está como favorito!');
+      toast.warning('Esse filme já está como favorito!');
       return;
     }
 
     savedMovies.push(movie);
     localStorage.setItem('@devflix', JSON.stringify(savedMovies));
 
-    alert('Filme salvo com sucesso!');
+    toast.success('Filme salvo com sucesso!');
   }
 
   if (loading) {
